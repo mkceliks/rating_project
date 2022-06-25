@@ -3,14 +3,14 @@ This is a rating project for universities
 
 For starting this project;
 
-- Download or Clone the code to your desktrop.
+Download or Clone the code to your desktrop.
 # open the web-interface
 - <pre><code>ng serve --open</code></pre>
 # build the main.go file
 - <pre><code>go build</code></pre>
 # run the backend server.
 - <pre><code>go run main.go</code></pre>
-- Those all things should write to the terminal of the specific file or folder.
+Those all things should write to the terminal of the specific file or folder.
 
 # 25.06.2022 
 
