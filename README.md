@@ -23,5 +23,5 @@ Those all things should write to the terminal of the specific file or folder.
 
 - Necessary imports made like js files,bootstrap.
 - Dashboard component generated.
-- Movie component,service and model generated and entegrated with MongoDB data structs
-- Episodes model and service generated to show the movies episodes and entagrated with MongoDB data structs
+- Movie component,service and model generated and integrated with MongoDB data structs
+- Episodes model and service generated to show the movies episodes and integrated with MongoDB data structs
