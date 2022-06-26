@@ -18,3 +18,10 @@ Those all things should write to the terminal of the specific file or folder.
 - service, component, model files are created.
 - First connection established with backend side.
 - Just created a simple struct that has 3 data variables with string type.
+
+# 26.06.2022
+
+- Necessary imports made like js files,bootstrap.
+- Dashboard component generated.
+- Movie component,service and model generated and entegrated with MongoDB data structs
+- Episodes model and service generated to show the movies episodes and entagrated with MongoDB data structs
