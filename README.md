@@ -19,7 +19,7 @@ Those all things should write to the terminal of the specific file or folder.
 - First connection established with backend side.
 - Just created a simple struct that has 3 data variables with string type.
 
-#26.06.2022
+# 26.06.2022
 
 - Necessary imports made like js files,bootstrap.
 - Dashboard component generated.
