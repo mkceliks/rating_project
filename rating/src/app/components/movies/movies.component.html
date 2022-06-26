@@ -1,3 +1,41 @@
-<p *ngFor="let movie of movies"> ID => {{movie.id}}</p>
-<p *ngFor="let movie of movies"> Dizinin Adı => {{movie.title}}</p>
-<p *ngFor="let movie of movies"> ISBN numarası => {{movie.isbn}}</p>
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 *ngFor="let movie of movies" class="fw-light">{{movie.title}}</h1>
+        <p  *ngFor="let movie of movies" class="lead text-muted">Rating  of the anime is : {{movie.rating}}</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        
+        <div *ngFor="let episode of episodes" class="col">
+          <div class="card shadow-sm">
+            <img src="../../../assets/aot.jpg" height="400" width="100%" class="bd-placeholder-img card-img-top" alt="">
+
+            <div class="card-body">
+              <p class="card-text">{{episode.description}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">{{ episode.duration }} mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
