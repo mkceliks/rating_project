@@ -1,22 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NaviComponent } from './components/navi/navi.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
-    DashboardComponent
+    DashboardComponent,
+    NaviComponent,
+    AddProductComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
