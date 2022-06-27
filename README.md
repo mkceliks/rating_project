@@ -25,3 +25,12 @@ Those all things should write to the terminal of the specific file or folder.
 - Dashboard component generated.
 - Movie component,service and model generated and integrated with MongoDB data structs
 - Episodes model and service generated to show the movies episodes and integrated with MongoDB data structs
+
+# 27.06.2022
+
+- CORS files added to the go file and synchronized with all system.
+- addAnime() function created on backend side. And it integrated with the frontend side. ( Works well! )
+- Product adding service and component added to the angular side. Retrieving the data from the POST method and sends it to the backend side. ( /add-anime )
+- Navi,category and dashboard components created and updated.
+- Necessery importations and changes made on app.module.ts, app.component.html, app-routing.module.ts ( npm Toastr, FormsModules, ReactiveFormsModule and Routings).
+
