@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -35,9 +36,6 @@ var episodes []Episode
 
 func getAnimes(w http.ResponseWriter, r *http.Request) {
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type,access-control-allow-origin, access-control-allow-headers")
-
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://mkceliks:159987741@loginsystem.0j8qw.mongodb.net/?retryWrites=true&w=majority"))
 	if err != nil {
 		log.Fatal(err)
@@ -61,30 +59,13 @@ func getAnimes(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	// /////////////////////////////////////////// SEARCHING ALL THE DB
-	// var animes []Anime
-	// defer cursor.Close(ctx)
-	// for cursor.Next(ctx) {
-	// 	if err = cursor.Decode(&animes); err != nil {
-	// 		log.Fatal(err)
-	// 	}
-	// 	fmt.Println(animes[0].Title)
-	// }
-	// ///////////////////////////////////////////
-
-	/////////////////////////////////////////  SEARCHING ALL THE DB
-
 	if err = cursor.All(ctx, &animes); err != nil {
 		log.Fatal(err)
 	}
-	/////////////////////////////////////////
 	json.NewEncoder(w).Encode(animes)
 }
 
 func getEpisodes(w http.ResponseWriter, r *http.Request) {
-
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type,access-control-allow-origin, access-control-allow-headers")
 
 	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://mkceliks:159987741@loginsystem.0j8qw.mongodb.net/?retryWrites=true&w=majority"))
 	if err != nil {
@@ -109,6 +90,11 @@ func getEpisodes(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	if err = cursor.All(ctx, &episodes); err != nil {
+		log.Fatal(err)
+	}
+	json.NewEncoder(w).Encode(episodes)
+
 	// /////////////////////////////////////////// SEARCHING ALL THE DB
 	// var animes []Anime
 	// defer cursor.Close(ctx)
@@ -121,12 +107,8 @@ func getEpisodes(w http.ResponseWriter, r *http.Request) {
 	// ///////////////////////////////////////////
 
 	/////////////////////////////////////////  SEARCHING ALL THE DB
-
-	if err = cursor.All(ctx, &episodes); err != nil {
-		log.Fatal(err)
-	}
 	/////////////////////////////////////////
-	json.NewEncoder(w).Encode(episodes)
+
 }
 
 // func deleteMovie(w http.ResponseWriter, r *http.Request) {
@@ -152,15 +134,6 @@ func getEpisodes(w http.ResponseWriter, r *http.Request) {
 // 	}
 // }
 
-// func createMovie(w http.ResponseWriter, r *http.Request) {
-// 	w.Header().Set("Content-Type", "application/json")
-// 	var movie Movie
-// 	_ = json.NewDecoder(r.Body).Decode(&movie)
-// 	movie.ID = strconv.Itoa(rand.Intn(10000000))
-// 	movies = append(movies, movie)
-// 	json.NewEncoder(w).Encode(movie)
-// }
-
 // func updateMovie(w http.ResponseWriter, r *http.Request) {
 
 // 	w.Header().Set("Content-Type", "application/json")
@@ -177,6 +150,48 @@ func getEpisodes(w http.ResponseWriter, r *http.Request) {
 // 	}
 
 // }
+
+// func createMovie(w http.ResponseWriter, r *http.Request) {
+
+// }
+
+func addAnime(w http.ResponseWriter, r *http.Request) {
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://mkceliks:159987741@loginsystem.0j8qw.mongodb.net/?retryWrites=true&w=majority"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	err = client.Connect(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer client.Disconnect(ctx)
+	err = client.Ping(ctx, readpref.Primary())
+	if err != nil {
+		log.Fatal(err)
+	}
+	animeDb := client.Database("animes")
+	animeCollection := animeDb.Collection("anime")
+
+	if r.Method == "POST" {
+		w.Header().Set("Content-Type", "application/json")
+		var anime Anime
+		_ = json.NewDecoder(r.Body).Decode(&anime)
+
+		animeResult, err := animeCollection.InsertOne(ctx, bson.D{
+			{"rating", anime.Rating},
+			{"title", anime.Title},
+		})
+		json.NewEncoder(w).Encode(animeResult)
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		log.Fatal(err)
+	}
+
+}
 
 func main() {
 
@@ -214,16 +229,6 @@ func main() {
 	// }
 	// fmt.Println(episodesSorted)
 
-	// /////////////////////////////////////////// INSERTING TO DB WITH InsertOne
-	// animeResult, err := animeCollection.InsertOne(ctx, bson.D{
-	// 	{"Title", "Attack On Titan"},
-	// 	{"Rating", "10.0"},
-	// })
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// fmt.Println(animeResult.InsertedID)
-
 	/////////////////////////////////////////// INSERTING TO DB WITH InsertMany
 	// episodeResult, err := episodesCollection.InsertMany(ctx, []interface{}{
 	// 	bson.D{
@@ -248,11 +253,11 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/movies", getAnimes).Methods("GET")
 	r.HandleFunc("/episodes", getEpisodes).Methods("GET")
-	// r.HandleFunc("/movies", createMovie).Methods("POST")
+	r.HandleFunc("/add-anime", addAnime).Methods("POST")
 	// r.HandleFunc("/movies/{id}", updateMovie).Methods("PUT")
 	// r.HandleFunc("/movies/{id}", deleteMovie).Methods("DELETE")
-
+	handler := cors.Default().Handler(r)
 	fmt.Printf("Server is running on port 8000")
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Fatal(http.ListenAndServe(":8000", handler))
 
 }
