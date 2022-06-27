@@ -3,11 +3,11 @@ import { Movie } from 'src/app/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class CategoryComponent implements OnInit {
 
   movies : Movie[] = [];
 
