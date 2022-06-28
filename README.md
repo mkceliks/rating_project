@@ -1,5 +1,5 @@
 # Rating Project For Universities ( Angular and Go )
-This is a rating project for universities
+This is gonna be a rating project for universities but it goes a movie website right now :).
 
 For starting this project;
 
