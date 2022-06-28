@@ -1,47 +1,23 @@
 <aside class="bd-aside sticky-xl-top text-muted align-self-start mb-3 mb-xl-5 px-2">
-    <h2 class="h6 pt-4 pb-3 mb-4 border-bottom">On this page</h2>
-    <nav class="small" id="toc">
+    <h2 style="text-align: center;" class="h6 pt-4 pb-3 mb-4 border-bottom">Category</h2>
+    <nav style="text-align: center;" class="small" id="toc">
       <ul class="list-unstyled">
         <li class="my-2">
-          <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">Animes</button>
+          <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">Movies</button>
           <ul class="list-unstyled ps-3 collapse" id="contents-collapse">
             <li style="margin-top: 5px;" *ngFor="let movie of movies"><a class="d-inline-flex align-items-center rounded text-decoration-none" href="{{movie._id}}">{{movie.title}}</a></li>
           </ul>
         </li>
         <li class="my-2">
-          <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#forms-collapse" aria-controls="forms-collapse">Forms</button>
+          <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#forms-collapse" aria-controls="forms-collapse">Animes</button>
           <ul class="list-unstyled ps-3 collapse" id="forms-collapse">
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#overview">Overview</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#disabled-forms">Disabled forms</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#sizing">Sizing</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#input-group">Input group</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#floating-labels">Floating labels</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#validation">Validation</a></li>
+            <li style="margin-top: 5px;" *ngFor="let anime of animes"><a class="d-inline-flex align-items-center rounded text-decoration-none" href="{{anime._id}}">{{anime.title}}</a></li>
           </ul>
         </li>
         <li class="my-2">
-          <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#components-collapse" aria-controls="components-collapse">Components</button>
+          <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#components-collapse" aria-controls="components-collapse">Sports</button>
           <ul class="list-unstyled ps-3 collapse" id="components-collapse">
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#accordion">Accordion</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#alerts">Alerts</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#badge">Badge</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#breadcrumb">Breadcrumb</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#buttons">Buttons</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#button-group">Button group</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#card">Card</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#carousel">Carousel</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#dropdowns">Dropdowns</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#list-group">List group</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#modal">Modal</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navs">Navs</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navbar">Navbar</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#pagination">Pagination</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#popovers">Popovers</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#progress">Progress</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#scrollspy">Scrollspy</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#spinners">Spinners</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#toasts">Toasts</a></li>
-            <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#tooltips">Tooltips</a></li>
+            <li style="margin-top: 5px;" *ngFor="let sport of sports"><a class="d-inline-flex align-items-center rounded text-decoration-none" href="{{sport._id}}">{{sport.title}}</a></li>
           </ul>
         </li>
       </ul>

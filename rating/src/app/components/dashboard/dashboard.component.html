@@ -1,30 +1,124 @@
- <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 *ngIf="movies" class="fw-light">Animes</h1>
-        <p  *ngIf="movies" class="lead text-muted">There are {{movies.length}} animes in the list.</p>
-      </div>
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Dashboard</h1>
+      <p *ngIf="animes.length > 0 || movies.length > 0  || sports.length > 0" class="lead text-muted">
+        There are <span *ngIf="movies.length > 0 " style="font-weight: bold;">{{ movies.length }} movies</span>,<span *ngIf="animes.length > 0" style="font-weight: bold;"> {{ animes.length }} animes</span>,
+        <span *ngIf="sports.length > 0" style="font-weight: bold;">{{ sports.length }} sport shows</span> in the list.
+      </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
+<div *ngIf="animes.length > 0" style="border: solid 2px black; border-radius: 10px;box-shadow: 10px 5px;" class="album py-5 bg-light mb-3">
+  <div class="container">
+    <h1 style="text-align: center;">Animes</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">     
+      <div  *ngFor="let anime of animes" class="col">
+        <div style="border:solid 2px black;border-radius:7px;" class="card shadow-sm">
+          <img
+            src="../../../assets/aot.jpg"
+            height="400"
+            width="100%"
+            class="bd-placeholder-img card-img-top"
+            alt=""
+          />
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        
-        <div *ngFor="let movie of movies" class="col">
-          <div class="card shadow-sm">
-            <img src="../../../assets/aot.jpg" height="400" width="100%" class="bd-placeholder-img card-img-top" alt="">
-
-            <div class="card-body">
-              <p class="card-text">{{movie.title}}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">{{ movie.rating }} <span class="fa-solid fa-star"></span></small>
+          <div class="card-body">
+            <p class="card-text">{{ anime.title }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Watch
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Add to Favorites
+                </button>
               </div>
+              <small class="text-muted"
+                >{{ anime.rating }} <span class="fa-solid fa-star"></span
+              ></small>
             </div>
           </div>
         </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+      <div *ngIf="movies.length > 0" style="border: solid 2px black; border-radius: 10px;box-shadow: 10px 5px;"  class="album py-5 bg-light mb-3">
+        <div class="container">
+          <h1 style="text-align: center;">Movies</h1>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">     
+      <div *ngFor="let movie of movies" class="col"> 
+        <div style="border:solid 2px black;border-radius:7px;" class="card shadow-sm">
+          <img
+            src="../../../assets/bbad.jpg"
+            height="400"
+            width="100%"
+            class="bd-placeholder-img card-img-top"
+            alt=""
+          />
+
+          <div class="card-body">
+            <p class="card-text">{{ movie.title }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Watch
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Add to Favorites
+                </button>
+              </div>
+              <small class="text-muted"
+                >{{ movie.rating }} <span class="fa-solid fa-star"></span
+              ></small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="sports.length > 0" style="border: solid 2px black; border-radius: 10px;box-shadow: 10px 5px;" class="album py-5 bg-light mb-3">
+  <div class="container">
+    <h1 style="text-align: center;">Sport Shows</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"> 
+      <div *ngFor="let sport of sports" class="col"> 
+        <div style="border:solid 2px black;border-radius:7px;" class="card shadow-sm">
+          <img
+            src="../../../assets/nba-2016.jpg"
+            height="400"
+            width="100%"
+            class="bd-placeholder-img card-img-top"
+            alt=""
+          />
+
+          <div class="card-body">
+            <p class="card-text">{{ sport.title }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Watch
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Add to Favorites
+                </button>
+              </div>
+              <small class="text-muted"
+                >{{ sport.rating }} <span class="fa-solid fa-star"></span
+              ></small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
