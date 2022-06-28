@@ -9,6 +9,8 @@ import { NaviComponent } from './components/navi/navi.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { CategoryComponent } from './components/category/category.component';
+import { AnimesComponent } from './components/animes/animes.component';
+import { SportsComponent } from './components/sports/sports.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CategoryComponent } from './components/category/category.component';
     DashboardComponent,
     NaviComponent,
     AddProductComponent,
-    CategoryComponent
+    CategoryComponent,
+    AnimesComponent,
+    SportsComponent
   ],
   imports: [
     BrowserModule,
