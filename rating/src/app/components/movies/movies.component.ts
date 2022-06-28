@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Episode } from 'src/app/models/episode';
 import { Movie } from 'src/app/models/movie';
-import { EpisodesService } from 'src/app/services/episodes.service';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -12,13 +10,11 @@ import { MovieService } from 'src/app/services/movie.service';
 export class MoviesComponent implements OnInit {
 
   movies : Movie[] = [];
-  episodes : Episode[] = [];
 
-  constructor(private movieService:MovieService,private episodeService:EpisodesService) { }
+  constructor(private movieService:MovieService) { }
 
   ngOnInit(): void {
     this.getMovies();
-    this.getEpisodes();
   }
 
   getMovies(){
@@ -27,10 +23,5 @@ export class MoviesComponent implements OnInit {
     })
   }
 
-  getEpisodes(){
-    this.episodeService.getEpisodes().subscribe(response => {
-      this.episodes = response
-    })
-  }
 
 }
