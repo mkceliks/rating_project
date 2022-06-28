@@ -34,3 +34,12 @@ Those all things should write to the terminal of the specific file or folder.
 - Navi,category and dashboard components created and updated.
 - Necessery importations and changes made on app.module.ts, app.component.html, app-routing.module.ts ( npm Toastr, FormsModules, ReactiveFormsModule and Routings).
 
+# 28.06.2022
+
+- Product-add service created to integrate with backend. Movie service updated to get all the data from database about movies,animes and sports collections.
+- Anime and Sport interfaces are created. These interfaces are same with the movie interface.
+- Sports and Animes components are created and Movies component updated to just show movie collection.
+- Navi, Dashboard and Category updated and integrated. Add button added to the navi. There are 3 forms in add buttons route. So add button can add the data to the database for 3 collection right now. ( Tested and Works Well! )
+- Adding functions added to the main.go file and created the API's. 4 Structs added to the main.go file. All of them are integrated.
+- Add-product component file edited to add data to 3 collections.
+- Routing stuffs are OK! with angular side.
