@@ -10,7 +10,8 @@
               </div>
          </div>
          <br>
-          <form [formGroup]="productAddForm" class="row g-3">
+
+          <form [formGroup]="animeAddForm" class="row g-3 mb-3">
               <div class="col-md-6">
                 <label for="name" class="form-label">Anime Name</label>
                 <input placeholder="Anime Name" type="text" class="form-control" name="title" id="title" formControlName="title" required>
@@ -20,7 +21,35 @@
                   <input placeholder="Rating" type="text" class="form-control" name="rating" id="rating" formControlName="rating" required>
                 </div>
               <div style="text-align: center;" class="col-12">
-                <button class="btn btn-primary" (click)="add()">Submit form</button>
+                <button class="btn btn-primary" (click)="addAnime()">Submit form</button>
+              </div>
+            </form>
+
+            <form [formGroup]="movieAddForm" class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">Movie Name</label>
+                <input placeholder="Anime Name" type="text" class="form-control" name="title" id="title" formControlName="title" required>
+              </div>
+              <div  class="col-md-6">
+                  <label for="stock" class="form-label">Rating</label>
+                  <input placeholder="Rating" type="text" class="form-control" name="rating" id="rating" formControlName="rating" required>
+                </div>
+              <div style="text-align: center;" class="col-12">
+                <button class="btn btn-primary" (click)="addMovie()">Submit form</button>
+              </div>
+            </form>
+
+            <form [formGroup]="sportAddForm" class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">Sport Show Name</label>
+                <input placeholder="Anime Name" type="text" class="form-control" name="title" id="title" formControlName="title" required>
+              </div>
+              <div  class="col-md-6">
+                  <label for="stock" class="form-label">Rating</label>
+                  <input placeholder="Rating" type="text" class="form-control" name="rating" id="rating" formControlName="rating" required>
+                </div>
+              <div style="text-align: center;" class="col-12">
+                <button class="btn btn-primary" (click)="addSport()">Submit form</button>
               </div>
             </form>
       </div>
