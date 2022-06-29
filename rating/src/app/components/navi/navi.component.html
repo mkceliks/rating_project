@@ -1,38 +1,84 @@
 <header class="p-3 mb-3 border-bottom">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-0 mb-lg-0 text-dark text-decoration-none">
-            <i style="letter-spacing: 2px;margin-right: 1.2em;" class="fa-solid fa-film">letmewatch</i>
+  <div class="container">
+    <div
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+    >
+      <a
+        href="/"
+        class="d-flex align-items-center mb-0 mb-lg-0 text-dark text-decoration-none"
+      >
+        <i
+          style="letter-spacing: 2px; margin-right: 1.2em"
+          class="fa-solid fa-film"
+          >letmewatch</i
+        >
+      </a>
+
+      <ul
+        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+      >
+        <li style="margin-right: 10px">
+          <a href="#" class="nav-link px-2 link-dark">Dashboard</a>
+        </li>
+        <!-- <i style="margin-top: 0.7em;padding-right:0;" class="fa-solid fa-school"></i>  -->
+        <li style="margin-right: 10px">
+          <a href="movies" class="nav-link px-2 link-dark">Movie</a>
+        </li>
+        <!-- <i style="margin-top: 0.7em;padding-right:0;" class="fa-solid fa-arrow-up-9-1"></i> -->
+        <li style="margin-right: 10px">
+          <a href="animes" class="nav-link px-2 link-dark">Anime</a>
+        </li>
+        <!-- <i style="margin-top: 0.7em;padding-right:0;" class="fa-solid fa-comment"></i> -->
+        <li style="margin-right: 10px">
+          <a href="sports" class="nav-link px-2 link-dark">Sport</a>
+        </li>
+        <!-- <i style="margin-top: 0.7em;padding-right:0;" class="fa-solid fa-comment"></i> -->
+        <li style="margin-right: 10px">
+          <a href="add-product" class="btn btn-success btn-sm mt-1"
+            >Add Product</a
+          >
+        </li>
+        <!-- <i style="margin-top: 0.7em;padding-right:0;" class="fa-solid fa-comment"></i> -->
+        <li style="margin-right: 10px">
+          <a href="add-episode" class="btn btn-success btn-sm mt-1"
+            >Add Episode</a
+          >
+        </li>
+      </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Search..."
+          aria-label="Search"
+        />
+      </form>
+
+      <div class="dropdown text-end">
+        <a
+          href="#"
+          class="d-block link-dark text-decoration-none dropdown-toggle"
+          id="dropdownUser1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="../../../assets/resim.jpg"
+            alt="mdo"
+            width="45"
+            height="45s"
+            class="rounded-circle"
+          />
         </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li style="margin-right: 10px;" ><a href="#" class="nav-link px-2 link-dark">Dashboard</a></li>
-          <!-- <i style="margin-top: 0.7em;padding-right:0;" class="fa-solid fa-school"></i>  -->
-          <li style="margin-right: 10px;"><a href="movies" class="nav-link px-2 link-dark">Movie</a></li>
-          <!-- <i style="margin-top: 0.7em;padding-right:0;" class="fa-solid fa-arrow-up-9-1"></i> -->
-          <li style="margin-right: 10px;"><a href="animes" class="nav-link px-2 link-dark">Anime</a></li>
-          <!-- <i style="margin-top: 0.7em;padding-right:0;" class="fa-solid fa-comment"></i> -->
-          <li style="margin-right: 10px;"><a href="sports" class="nav-link px-2 link-dark">Sport</a></li>
-          <!-- <i style="margin-top: 0.7em;padding-right:0;" class="fa-solid fa-comment"></i> -->
-          <li style="margin-right: 10px;"><a href="add-anime" class="btn btn-success btn-sm mt-1">Add</a></li>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">My Favorites</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#">Sign Out</a></li>
         </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../../../assets/resim.jpg" alt="mdo" width="45" height="45s" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">My Favorites</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign Out</a></li>
-          </ul>
-        </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
