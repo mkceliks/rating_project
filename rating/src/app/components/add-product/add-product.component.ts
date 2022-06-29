@@ -5,17 +5,14 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
-import { Movie } from 'src/app/models/movie';
 import { ProductAddService } from 'src/app/services/product-add.service';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
-
-  movies: Movie[] = [];
   animeAddForm: FormGroup;
   movieAddForm: FormGroup;
   sportAddForm: FormGroup;
@@ -23,14 +20,13 @@ export class AddProductComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private productAddService: ProductAddService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.createAnimeAddForm();
   }
 
   createAnimeAddForm() {
-    
     this.animeAddForm = this.formBuilder.group({
       rating: ['', Validators.required],
       title: ['', Validators.required],
@@ -48,42 +44,35 @@ export class AddProductComponent implements OnInit {
   }
 
   addAnime() {
-  
-   if (this.animeAddForm.valid) {
+    if (this.animeAddForm.valid) {
       let productModel = Object.assign({}, this.animeAddForm.value);
       this.productAddService.addAnime(productModel).subscribe((response) => {
-        alert("Addition is successful.")
+        alert('Addition is successful.');
       });
-   } else {
-  alert('Formunuz Geçersizdir.');
- }
+    } else {
+      alert('Formunuz Geçersizdir.');
     }
+  }
 
-    addSport() {
-  
-      if (this.sportAddForm.valid) {
-         let productModel = Object.assign({}, this.sportAddForm.value);
-         this.productAddService.addSport(productModel).subscribe((response) => {
-           alert("Addition is successful.")
-         });
-      } else {
-     alert('Formunuz Geçersizdir.');
+  addSport() {
+    if (this.sportAddForm.valid) {
+      let productModel = Object.assign({}, this.sportAddForm.value);
+      this.productAddService.addSport(productModel).subscribe((response) => {
+        alert('Addition is successful.');
+      });
+    } else {
+      alert('Formunuz Geçersizdir.');
     }
-       }
+  }
 
-       addMovie() {
-  
-        if (this.movieAddForm.valid) {
-           let productModel = Object.assign({}, this.movieAddForm.value);
-           this.productAddService.addMovie(productModel).subscribe((response) => {
-             alert("Addition is successful.")
-           });
-        } else {
-       alert('Formunuz Geçersizdir.');
-      }
-         }
-
-
-
-
+  addMovie() {
+    if (this.movieAddForm.valid) {
+      let productModel = Object.assign({}, this.movieAddForm.value);
+      this.productAddService.addMovie(productModel).subscribe((response) => {
+        alert('Addition is successful.');
+      });
+    } else {
+      alert('Formunuz Geçersizdir.');
+    }
+  }
 }

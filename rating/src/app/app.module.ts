@@ -11,6 +11,8 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { CategoryComponent } from './components/category/category.component';
 import { AnimesComponent } from './components/animes/animes.component';
 import { SportsComponent } from './components/sports/sports.component';
+import { AddEpisodeComponent } from './components/add-episode/add-episode.component';
+import { EpisodesComponent } from './components/episodes/episodes.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SportsComponent } from './components/sports/sports.component';
     AddProductComponent,
     CategoryComponent,
     AnimesComponent,
-    SportsComponent
+    SportsComponent,
+    AddEpisodeComponent,
+    EpisodesComponent
   ],
   imports: [
     BrowserModule,

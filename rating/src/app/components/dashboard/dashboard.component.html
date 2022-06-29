@@ -32,7 +32,7 @@
                   Watch
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Add to Favorites
+                  Add an episode
                 </button>
               </div>
               <small class="text-muted"
@@ -68,7 +68,7 @@
                   Watch
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Add to Favorites
+                  Add an episode
                 </button>
               </div>
               <small class="text-muted"
@@ -101,12 +101,8 @@
             <p class="card-text">{{ sport.title }}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Watch
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Add to Favorites
-                </button>
+                <a href="episodes/{{sport._id}}" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Watch</a> 
+                 <a href="add-episode" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Add an episode</a> 
               </div>
               <small class="text-muted"
                 >{{ sport.rating }} <span class="fa-solid fa-star"></span

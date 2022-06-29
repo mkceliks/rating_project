@@ -1,0 +1,155 @@
+<div class="content py-lg-5">
+  <br />
+  <div class="col-md-12 p-5">
+    <div class="card">
+      <div style="text-align: center" class="card-header">
+        <h5 class="title">Welcome to Episode Add Form Page</h5>
+      </div>
+    </div>
+    <br />
+
+    <form [formGroup]="animeEpisodeAddForm" class="row g-3 mb-3">
+        <select class="form-select" name="anime_id" formControlName="anime_id" id="anime_id">
+            <option value="" selected disabled>Select an anime for add an episode </option>
+            <option *ngFor="let anime of animes" value="{{anime._id}}">{{anime.title}}</option>
+          </select>
+      <div class="col-md-6">
+        <label for="name" class="form-label">Episode Name</label>
+        <input
+          placeholder="Episode Name"
+          type="text"
+          class="form-control"
+          name="title"
+          id="title"
+          formControlName="title"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="stock" class="form-label">Duration</label>
+        <input
+          placeholder="Duration"
+          type="text"
+          class="form-control"
+          name="duration"
+          id="duration"
+          formControlName="duration"
+          required
+        />
+      </div>
+      <div class="col-md-12">
+        <label for="stock" class="form-label">Description</label>
+        <input
+          placeholder="Description"
+          type="text"
+          class="form-control"
+          name="description"
+          id="description"
+          formControlName="description"
+          required
+        />
+      </div>
+      <div style="text-align: center" class="col-12">
+        <button class="btn btn-primary" (click)="addAnimeEpisode()">
+          Submit form
+        </button>
+      </div>
+    </form>
+
+    <form [formGroup]="movieEpisodeAddForm" class="row g-3 mb-3">
+        <select class="form-select" name="movie_id" formControlName="movie_id" id="movie_id">
+            <option value="" selected disabled>Select a movie for add an episode </option>
+            <option *ngFor="let movie of movies" value="{{movie._id}}">{{movie.title}}</option>
+          </select>
+      <div class="col-md-6">
+        <label for="name" class="form-label">Episode Name</label>
+        <input
+          placeholder="Episode Name"
+          type="text"
+          class="form-control"
+          name="title"
+          id="title"
+          formControlName="title"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="stock" class="form-label">Duration</label>
+        <input
+          placeholder="Duration"
+          type="text"
+          class="form-control"
+          name="duration"
+          id="duration"
+          formControlName="duration"
+          required
+        />
+      </div>
+      <div class="col-md-12">
+        <label for="stock" class="form-label">Description</label>
+        <input
+          placeholder="Description"
+          type="text"
+          class="form-control"
+          name="description"
+          id="description"
+          formControlName="description"
+          required
+        />
+      </div>
+      <div style="text-align: center" class="col-12">
+        <button class="btn btn-primary" (click)="addMovieEpisode()">
+          Submit form
+        </button>
+      </div>
+    </form>
+
+    <form [formGroup]="sportEpisodeAddForm" class="row g-3 mb-3">
+        <select class="form-select" name="sport_id" formControlName="sport_id" id="sport_id">
+            <option value="" selected disabled>Select a sport show for add an episode </option>
+            <option *ngFor="let sport of sports" value="{{sport._id}}">{{sport.title}}</option>
+          </select>
+      <div class="col-md-6">
+        <label for="name" class="form-label">Episode Name</label>
+        <input
+          placeholder="Episode Name"
+          type="text"
+          class="form-control"
+          name="title"
+          id="title"
+          formControlName="title"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="stock" class="form-label">Duration</label>
+        <input
+          placeholder="Duration"
+          type="number"
+          class="form-control"
+          name="duration"
+          id="duration"
+          formControlName="duration"
+          required
+        />
+      </div>
+      <div class="col-md-12">
+        <label for="stock" class="form-label">Description</label>
+        <input
+          placeholder="Description"
+          type="text"
+          class="form-control"
+          name="description"
+          id="description"
+          formControlName="description"
+          required
+        />
+      </div>
+      <div style="text-align: center" class="col-12">
+        <button class="btn btn-primary" (click)="addSportEpisode()">
+          Submit form
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
