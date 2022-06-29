@@ -46,7 +46,7 @@ Those all things should write to the terminal of the specific file or folder.
 
 # 29.06.2022
 
-- Episode adding feature added to the backend and frontend. The user can select a movie, anime or sport show from dropdown and can import an episode into it. ( Wırks Well! )
+- Episode adding feature added to the backend and frontend. The user can select a movie, anime or sport show from dropdown and can import an episode into it. ( Works Well! )
 - The dropdown's options comes from 3 different collections which includes movies, animes and sport shows.
 - Models created for episodes in frontend side.
 - Tried to create a filter API but can't handle it with yet. There is some code about filtering by id to show episodes when the user clicks to the Watch button. ( NOT WORKING YET! )
