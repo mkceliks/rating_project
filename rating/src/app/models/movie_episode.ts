@@ -1,6 +1,6 @@
-export interface Episode {
+export interface movieEpisode {
     _id:string;
-    anime_id:string;
+    movie_id:string;
     title:string;
     description:string;
     duration:number;
