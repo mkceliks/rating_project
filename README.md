@@ -43,3 +43,11 @@ Those all things should write to the terminal of the specific file or folder.
 - Adding functions added to the main.go file and created the API's. 4 Structs added to the main.go file. All of them are integrated.
 - Add-product component file edited to add data to 3 collections.
 - Routing stuffs are OK! with angular side.
+
+# 29.06.2022
+
+- Episode adding feature added to the backend and frontend. The user can select a movie, anime or sport show from dropdown and can import an episode into it. ( Wırks Well! )
+- The dropdown's options comes from 3 different collections which includes movies, animes and sport shows.
+- Models created for episodes in frontend side.
+- Tried to create a filter API but can't handle it with yet. There is some code about filtering by id to show episodes when the user clicks to the Watch button. ( NOT WORKING YET! )
+- The button added to the navi for importing episodes into movies or something. This button routes to new page for user to import episodes.
