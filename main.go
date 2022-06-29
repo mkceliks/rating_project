@@ -151,6 +151,78 @@ func getAnimeEpisodes(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func getMovieEpisodes(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	movieEpisodeCollection := letmewatch.Collection("movie-episodes")
+
+	cursor, err := movieEpisodeCollection.Find(ctx, bson.M{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err = cursor.All(ctx, &movie_episodes); err != nil {
+		log.Fatal(err)
+	}
+	json.NewEncoder(w).Encode(movie_episodes)
+
+}
+
+func getSportEpisodes(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	sportEpisodeCollection := letmewatch.Collection("sport-episodes")
+
+	cursor, err := sportEpisodeCollection.Find(ctx, bson.M{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err = cursor.All(ctx, &sport_episodes); err != nil {
+		log.Fatal(err)
+	}
+	json.NewEncoder(w).Encode(sport_episodes)
+
+}
+
+func getSportEpisodesById(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	sportEpisodeCollection := letmewatch.Collection("sport-episodes")
+
+	id := mux.Vars(r)["id"]
+	fmt.Println(id + "\n")
+	cursor, err := sportEpisodeCollection.Find(ctx, bson.D{
+		{"sport_id", id},
+	})
+	fmt.Println(cursor)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var episodesFiltered []bson.D
+	if err = cursor.All(ctx, &episodesFiltered); err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(episodesFiltered)
+
+}
+
+// /////////////////////////////////////////// FILTERING THE DB WITH Cursor and Find
+// filterCursor, err := episodesCollection.Find(ctx, bson.M{"duration": 25})
+// if err != nil {
+// 	log.Fatal(err)
+// }
+// var episodesFiltered []bson.M
+// if err = filterCursor.All(ctx, &episodesFiltered); err != nil {
+// 	log.Fatal(err)
+// }
+// //fmt.Println(episodesFiltered)
+// ///////////////////////////////////////////
+
 // func deleteMovie(w http.ResponseWriter, r *http.Request) {
 // 	w.Header().Set("Content-Type", "application/json")
 // 	params := mux.Vars(r)
@@ -264,6 +336,81 @@ func addSport(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func addAnimeEpisode(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	animeEpisodeCollection := letmewatch.Collection("anime-episodes")
+
+	if r.Method == "POST" {
+		w.Header().Set("Content-Type", "application/json")
+		var anime_episode Anime_episode
+		_ = json.NewDecoder(r.Body).Decode(&anime_episode)
+
+		animeEpisodeResult, err := animeEpisodeCollection.InsertOne(ctx, bson.D{
+			{"anime_id", anime_episode.Anime},
+			{"title", anime_episode.Title},
+			{"description", anime_episode.Description},
+			{"duration", anime_episode.Duration},
+		})
+		json.NewEncoder(w).Encode(animeEpisodeResult)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+}
+
+func addMovieEpisode(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	movieEpisodeCollection := letmewatch.Collection("movie-episodes")
+
+	if r.Method == "POST" {
+		w.Header().Set("Content-Type", "application/json")
+		var movie_episode Movie_episode
+		_ = json.NewDecoder(r.Body).Decode(&movie_episode)
+
+		movieEpisodeResult, err := movieEpisodeCollection.InsertOne(ctx, bson.D{
+			{"movie_id", movie_episode.Movie},
+			{"title", movie_episode.Title},
+			{"description", movie_episode.Description},
+			{"duration", movie_episode.Duration},
+		})
+		json.NewEncoder(w).Encode(movieEpisodeResult)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+}
+
+func addSportEpisode(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	sportEpisodeCollection := letmewatch.Collection("sport-episodes")
+
+	if r.Method == "POST" {
+		w.Header().Set("Content-Type", "application/json")
+		var sport_episode Sport_episode
+		_ = json.NewDecoder(r.Body).Decode(&sport_episode)
+
+		sportEpisodeResult, err := sportEpisodeCollection.InsertOne(ctx, bson.D{
+			{"sport_id", sport_episode.Sport},
+			{"title", sport_episode.Title},
+			{"description", sport_episode.Description},
+			{"duration", sport_episode.Duration},
+		})
+		json.NewEncoder(w).Encode(sportEpisodeResult)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+}
+
 func main() {
 
 	// /////////////////////////////////////////// SEARCHING ALL THE DB AND RETURNS ONE WITH FindOne
@@ -272,18 +419,6 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 	// //fmt.Println(anime)
-	// ///////////////////////////////////////////
-
-	// /////////////////////////////////////////// FILTERING THE DB WITH Cursor and Find
-	// filterCursor, err := episodesCollection.Find(ctx, bson.M{"duration": 25})
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// var episodesFiltered []bson.M
-	// if err = filterCursor.All(ctx, &episodesFiltered); err != nil {
-	// 	log.Fatal(err)
-	// }
-	// //fmt.Println(episodesFiltered)
 	// ///////////////////////////////////////////
 
 	// /////////////////////////////////////////// SORTING THE DB WITH SetSort
@@ -325,10 +460,17 @@ func main() {
 	r.HandleFunc("/animes", getAnimes).Methods("GET")
 	r.HandleFunc("/anime-episodes", getAnimeEpisodes).Methods("GET")
 	r.HandleFunc("/movies", getMovies).Methods("GET")
+	r.HandleFunc("/movie-episodes", getMovieEpisodes).Methods("GET")
 	r.HandleFunc("/sports", getSports).Methods("GET")
+	r.HandleFunc("/sport-episodes", getSportEpisodes).Methods("GET")
+	r.HandleFunc("/sport-episodes/{id}", getSportEpisodesById).Methods("GET")
 	r.HandleFunc("/add-anime", addAnime).Methods("POST")
+	r.HandleFunc("/anime-episodes/add", addAnimeEpisode).Methods("POST")
 	r.HandleFunc("/add-movie", addMovie).Methods("POST")
+	r.HandleFunc("/movie-episodes/add", addMovieEpisode).Methods("POST")
 	r.HandleFunc("/add-sport", addSport).Methods("POST")
+	r.HandleFunc("/sport-episodes/add", addSportEpisode).Methods("POST")
+
 	// r.HandleFunc("/movies/{id}", updateMovie).Methods("PUT")
 	// r.HandleFunc("/movies/{id}", deleteMovie).Methods("DELETE")
 	handler := cors.Default().Handler(r)
