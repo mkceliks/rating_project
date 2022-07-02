@@ -73,4 +73,20 @@ export class EpisodesService {
     return this.httpClient.get<sportEpisode[]>(newPath);
 
   }
+
+  getAnimesById(animeId:string):Observable<animeEpisode[]> {
+
+    let newPath = this.apiUrl + "anime-episodes/"+ animeId
+
+    return this.httpClient.get<animeEpisode[]>(newPath);
+
+  }
+
+  getMoviesById(movieId:string):Observable<movieEpisode[]> {
+
+    let newPath = this.apiUrl + "movie-episodes/"+ movieId
+
+    return this.httpClient.get<movieEpisode[]>(newPath);
+
+  }
 }
