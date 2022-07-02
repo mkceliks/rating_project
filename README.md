@@ -61,3 +61,8 @@ Those all things should write to the terminal of the specific file or folder.
 - Unnecessery comment-lined files deleted from main.go file.
 - Models and Server folders created.
 - Struct models and functions ( setters, getters ) moved to models and server folders.
+
+# 03.07.2022
+
+- Anime and Movie episodes getting byID added to the components and service on angular side.
+- Anime and Movie episodes getting byID functions added to the main.go, API Paths created to the server.go.
