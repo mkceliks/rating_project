@@ -59,3 +59,5 @@ Those all things should write to the terminal of the specific file or folder.
 - Dashboard css updated.
 - Episodes component and service updated, fixed and integrated with filterAPI.
 - Unnecessery comment-lined files deleted from main.go file.
+- Models and Server folders created.
+- Struct models and functions ( setters, getters ) moved to models and server folders.
