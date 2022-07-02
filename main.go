@@ -206,62 +206,6 @@ func getSportEpisodesById(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// /////////////////////////////////////////// FILTERING THE DB WITH Cursor and Find
-// filterCursor, err := episodesCollection.Find(ctx, bson.M{"duration": 25})
-// if err != nil {
-// 	log.Fatal(err)
-// }
-// var episodesFiltered []bson.M
-// if err = filterCursor.All(ctx, &episodesFiltered); err != nil {
-// 	log.Fatal(err)
-// }
-// //fmt.Println(episodesFiltered)
-// ///////////////////////////////////////////
-
-// func deleteMovie(w http.ResponseWriter, r *http.Request) {
-// 	w.Header().Set("Content-Type", "application/json")
-// 	params := mux.Vars(r)
-// 	for index, item := range movies {
-// 		if item.ID == params["id"] {
-// 			movies = append(movies[:index], movies[index+1:]...)
-// 			break
-// 		}
-// 	}
-// 	json.NewEncoder(w).Encode(movies)
-// }
-
-// func getMovie(w http.ResponseWriter, r *http.Request) {
-// 	w.Header().Set("Content-Type", "application/json")
-// 	params := mux.Vars(r)
-// 	for _, item := range movies {
-// 		if item.ID == params["id"] {
-// 			json.NewEncoder(w).Encode(item)
-// 			return
-// 		}
-// 	}
-// }
-
-// func updateMovie(w http.ResponseWriter, r *http.Request) {
-
-// 	w.Header().Set("Content-Type", "application/json")
-// 	params := mux.Vars(r)
-// 	for index, item := range movies {
-// 		if item.ID == params["id"] {
-// 			movies = append(movies[:index], movies[index+1:]...)
-// 			var movie Movie
-// 			_ = json.NewDecoder(r.Body).Decode(&movie)
-// 			movie.ID = params["id"]
-// 			movies = append(movies, movie)
-// 			json.NewEncoder(w).Encode(movie)
-// 		}
-// 	}
-
-// }
-
-// func createMovie(w http.ResponseWriter, r *http.Request) {
-
-// }
-
 func addAnime(w http.ResponseWriter, r *http.Request) {
 
 	conn := InitiateMongoClient()
@@ -408,49 +352,6 @@ func addSportEpisode(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	// /////////////////////////////////////////// SEARCHING ALL THE DB AND RETURNS ONE WITH FindOne
-	// var anime bson.M
-	// if err = animeCollection.FindOne(ctx, bson.M{}).Decode(&anime); err != nil {
-	// 	log.Fatal(err)
-	// }
-	// //fmt.Println(anime)
-	// ///////////////////////////////////////////
-
-	// /////////////////////////////////////////// SORTING THE DB WITH SetSort
-	// opts := options.Find()
-	// opts.SetSort(bson.D{{"duration", 1}})
-	// sortCursor, err := episodesCollection.Find(ctx, bson.D{
-	// 	{"duration", bson.D{
-	// 		{"$gt", 26},
-	// 	}},
-	// }, opts)
-	// var episodesSorted []bson.M
-	// if err = sortCursor.All(ctx, &episodesSorted); err != nil {
-	// 	log.Fatal(err)
-	// }
-	// fmt.Println(episodesSorted)
-
-	/////////////////////////////////////////// INSERTING TO DB WITH InsertMany
-	// episodeResult, err := episodesCollection.InsertMany(ctx, []interface{}{
-	// 	bson.D{
-	// 		{"anime", animeResult.InsertedID},
-	// 		{"title", "Episode #1"},
-	// 		{"description", "This is the first episode."},
-	// 		{"duration", 25},
-	// 	},
-	// 	bson.D{
-	// 		{"anime", animeResult.InsertedID},
-	// 		{"title", "Episode #2"},
-	// 		{"description", "This is the second episode."},
-	// 		{"duration", 32},
-	// 	},
-	// })
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// fmt.Println(episodeResult.InsertedIDs)
-
-	/////////////////////////////////////////// MY CODES
 	r := mux.NewRouter()
 	r.HandleFunc("/animes", getAnimes).Methods("GET")
 	r.HandleFunc("/anime-episodes", getAnimeEpisodes).Methods("GET")
