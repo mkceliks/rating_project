@@ -14,19 +14,21 @@ import (
 func main() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/animes", server.GetAnimes).Methods("GET")
-	r.HandleFunc("/anime-episodes", server.GetAnimeEpisodes).Methods("GET")
-	r.HandleFunc("/movies", server.GetMovies).Methods("GET")
-	r.HandleFunc("/movie-episodes", server.GetMovieEpisodes).Methods("GET")
-	r.HandleFunc("/sports", server.GetSports).Methods("GET")
-	r.HandleFunc("/sport-episodes", server.GetSportEpisodes).Methods("GET")
-	r.HandleFunc("/sport-episodes/{id}", server.GetSportEpisodesById).Methods("GET")
-	r.HandleFunc("/add-anime", server.AddAnime).Methods("POST")
-	r.HandleFunc("/anime-episodes/add", server.AddAnimeEpisode).Methods("POST")
-	r.HandleFunc("/add-movie", server.AddMovie).Methods("POST")
-	r.HandleFunc("/movie-episodes/add", server.AddMovieEpisode).Methods("POST")
-	r.HandleFunc("/add-sport", server.AddSport).Methods("POST")
-	r.HandleFunc("/sport-episodes/add", server.AddSportEpisode).Methods("POST")
+	r.HandleFunc("/animes", server.GetAnimes).Methods("GET")                         // gets all animes
+	r.HandleFunc("/anime-episodes", server.GetAnimeEpisodes).Methods("GET")          // gets all anime episodes
+	r.HandleFunc("/anime-episodes/{id}", server.GetAnimeEpisodesById).Methods("GET") // gets anime episodes by anime_id
+	r.HandleFunc("/movies", server.GetMovies).Methods("GET")                         // gets all movies
+	r.HandleFunc("/movie-episodes", server.GetMovieEpisodes).Methods("GET")          // gets all movie episodes
+	r.HandleFunc("/movie-episodes/{id}", server.GetMovieEpisodesById).Methods("GET") // gets movie episodes by movie_id
+	r.HandleFunc("/sports", server.GetSports).Methods("GET")                         // gets all sport shows
+	r.HandleFunc("/sport-episodes", server.GetSportEpisodes).Methods("GET")          // gets all ssport shows episodes
+	r.HandleFunc("/sport-episodes/{id}", server.GetSportEpisodesById).Methods("GET") // gets sport show's all episodes by sport_id
+	r.HandleFunc("/add-anime", server.AddAnime).Methods("POST")                      // adds anime into anime collection
+	r.HandleFunc("/anime-episodes/add", server.AddAnimeEpisode).Methods("POST")      // adds anime episode into anime_episodes collection
+	r.HandleFunc("/add-movie", server.AddMovie).Methods("POST")                      // adds movie into movie collection
+	r.HandleFunc("/movie-episodes/add", server.AddMovieEpisode).Methods("POST")      // adds movie episode into movie_episodes collection
+	r.HandleFunc("/add-sport", server.AddSport).Methods("POST")                      // adds sport show
+	r.HandleFunc("/sport-episodes/add", server.AddSportEpisode).Methods("POST")      // adds sport episode into sport_episodes collection
 
 	// r.HandleFunc("/movies/{id}", updateMovie).Methods("PUT")
 	// r.HandleFunc("/movies/{id}", deleteMovie).Methods("DELETE")
