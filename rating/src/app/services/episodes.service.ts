@@ -68,7 +68,7 @@ export class EpisodesService {
 
   getSportsById(sportId:string):Observable<sportEpisode[]> {
 
-    let newPath = this.apiUrl + "products/getepisodebyid?sportid="+ sportId
+    let newPath = this.apiUrl + "sport-episodes/"+ sportId
 
     return this.httpClient.get<sportEpisode[]>(newPath);
 
