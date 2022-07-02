@@ -28,12 +28,8 @@
             <p class="card-text">{{ anime.title }}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Watch
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Add an episode
-                </button>
+                <a href="anime-episodes/{{anime._id}}" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Watch</a> 
+                 <a href="add-episode" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Add an episode</a> 
               </div>
               <small class="text-muted"
                 >{{ anime.rating }} <span class="fa-solid fa-star"></span
@@ -64,12 +60,8 @@
             <p class="card-text">{{ movie.title }}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Watch
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Add an episode
-                </button>
+                <a href="movie-episodes/{{movie._id}}" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Watch</a> 
+                 <a href="add-episode" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Add an episode</a> 
               </div>
               <small class="text-muted"
                 >{{ movie.rating }} <span class="fa-solid fa-star"></span

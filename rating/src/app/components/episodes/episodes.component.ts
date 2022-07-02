@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { animeEpisode } from 'src/app/models/anime_episode';
+import { movieEpisode } from 'src/app/models/movie_episode';
 // import { Sport } from 'src/app/models/sport';
 import { sportEpisode } from 'src/app/models/sport_episode';
 import { EpisodesService } from 'src/app/services/episodes.service';
@@ -12,8 +14,9 @@ import { EpisodesService } from 'src/app/services/episodes.service';
 })
 export class EpisodesComponent implements OnInit {
 
-// sports : Sport[] = [];
 sport_episodes : sportEpisode[] = [];
+anime_episodes : animeEpisode[] = [];
+movie_episodes : movieEpisode[] = [];
 
   constructor(private episodeService:EpisodesService,private activatedRoot:ActivatedRoute) { }
 
@@ -23,13 +26,12 @@ sport_episodes : sportEpisode[] = [];
     this.activatedRoot.params.subscribe(params => {
 
       if(params["productId"]){
-        this.getSportEpisodesById(params["productId"])
+        this.getSportEpisodesById(params["productId"]);
+        this.getAnimeEpisodesById(params["productId"]);
+        this.getMovieEpisodesById(params["productId"]);
       }
-
+      
     })
-    // this.getSports();
-
-    // this.episodesSport();
   }
 
   getSportEpisodesById(productId:string){
@@ -39,23 +41,18 @@ sport_episodes : sportEpisode[] = [];
     })
   }
 
-  // getSports(){
-  //   this.movieService.getSports().subscribe(response => {
-  //     this.sports = response
-  //   })
-  // }
+  getAnimeEpisodesById(productId:string){
+    this.episodeService.getAnimesById(productId).subscribe(response => {
+      this.anime_episodes = response
+      
+    })
+  }
 
-  // episodesSport(){
-  //   var j = 0;
-  //   console.log(this.sport_episodes[0].sport_id)
-  //   console.log(this.sports[0]._id)
-  //   for(var i = 0; i< this.sports.length; i++ ){
-  //     if (this.sport_episodes[j].sport_id == this.sports[i]._id){
-  //       var game_title = this.sports[i].title
-  //       console.log(game_title)
-  //     }
-  //   }
-  //   return game_title
-  // }
+  getMovieEpisodesById(productId:string){
+    this.episodeService.getMoviesById(productId).subscribe(response => {
+      this.movie_episodes = response
+      
+    })
+  }
 
 }
