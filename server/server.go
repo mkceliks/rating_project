@@ -146,6 +146,44 @@ func GetSportEpisodes(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func GetAnimeEpisodesById(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	animeEpisodeCollection := letmewatch.Collection("anime-episodes")
+	id := mux.Vars(r)["id"]
+	objId, _ := primitive.ObjectIDFromHex(id)
+	cursor, err := animeEpisodeCollection.Find(ctx, bson.M{"anime_id": objId})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err = cursor.All(ctx, &anime_episodes); err != nil {
+		log.Fatal(err)
+	}
+	json.NewEncoder(w).Encode(anime_episodes)
+
+}
+
+func GetMovieEpisodesById(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	movieEpisodeCollection := letmewatch.Collection("movie-episodes")
+	id := mux.Vars(r)["id"]
+	objId, _ := primitive.ObjectIDFromHex(id)
+	cursor, err := movieEpisodeCollection.Find(ctx, bson.M{"movie_id": objId})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err = cursor.All(ctx, &movie_episodes); err != nil {
+		log.Fatal(err)
+	}
+	json.NewEncoder(w).Encode(movie_episodes)
+
+}
+
 func GetSportEpisodesById(w http.ResponseWriter, r *http.Request) {
 
 	conn := InitiateMongoClient()
