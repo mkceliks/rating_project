@@ -51,3 +51,10 @@ Those all things should write to the terminal of the specific file or folder.
 - Models created for episodes in frontend side.
 - Tried to create a filter API but can't handle it with yet. There is some code about filtering by id to show episodes when the user clicks to the Watch button. ( NOT WORKING YET! )
 - The button added to the navi for importing episodes into movies or something. This button routes to new page for user to import episodes.
+
+# 02.07.2022
+
+- Episode filtering and showing feature added for the sport section.
+- Bugs fixed from -29.06.2022- ( filterAPI )
+- Dashboard css updated.
+- Episodes component and service updated, fixed and integrated with filterAPI.
