@@ -193,21 +193,16 @@ func getSportEpisodesById(w http.ResponseWriter, r *http.Request) {
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	letmewatch := conn.Database("letmewatch")
 	sportEpisodeCollection := letmewatch.Collection("sport-episodes")
-
 	id := mux.Vars(r)["id"]
-	fmt.Println(id + "\n")
-	cursor, err := sportEpisodeCollection.Find(ctx, bson.D{
-		{"sport_id", id},
-	})
-	fmt.Println(cursor)
+	objId, _ := primitive.ObjectIDFromHex(id)
+	cursor, err := sportEpisodeCollection.Find(ctx, bson.M{"sport_id": objId})
 	if err != nil {
 		log.Fatal(err)
 	}
-	var episodesFiltered []bson.D
-	if err = cursor.All(ctx, &episodesFiltered); err != nil {
+	if err = cursor.All(ctx, &sport_episodes); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(episodesFiltered)
+	json.NewEncoder(w).Encode(sport_episodes)
 
 }
 
