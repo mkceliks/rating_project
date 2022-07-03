@@ -203,6 +203,21 @@ func GetSportEpisodesById(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func DeleteAnime(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	animesCollection := letmewatch.Collection("animes")
+	animeEpisodeCollection := letmewatch.Collection("anime-episodes")
+
+	id := mux.Vars(r)["id"]
+	objId, _ := primitive.ObjectIDFromHex(id)
+	animesCollection.DeleteOne(ctx, bson.M{"_id": objId})
+	animeEpisodeCollection.DeleteMany(ctx, bson.M{"anime_id": objId})
+
+}
+
 func AddAnime(w http.ResponseWriter, r *http.Request) {
 
 	conn := InitiateMongoClient()
