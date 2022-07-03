@@ -66,3 +66,4 @@ Those all things should write to the terminal of the specific file or folder.
 
 - Anime and Movie episodes getting byID added to the components and service on angular side.
 - Anime and Movie episodes getting byID functions added to the main.go, API Paths created to the server.go.
+- Anime delete API created. ( Tested on POSTMAN works Well!! ) It deletes the selected anime from animes collection with it's episodes(from anime-episodes coll).
