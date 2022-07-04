@@ -5,19 +5,19 @@
         <li class="my-2">
           <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">Movies</button>
           <ul class="list-unstyled ps-3 collapse" id="contents-collapse">
-            <li style="margin-top: 5px;" *ngFor="let movie of movies"><a class="d-inline-flex align-items-center rounded text-decoration-none" href="{{movie._id}}">{{movie.title}}</a></li>
+            <li style="margin-top: 5px;" *ngFor="let movie of movies"><a class="d-inline-flex align-items-center rounded text-decoration-none" href="movie-episodes/{{movie._id}}">{{movie.title}}</a></li>
           </ul>
         </li>
         <li class="my-2">
           <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#forms-collapse" aria-controls="forms-collapse">Animes</button>
           <ul class="list-unstyled ps-3 collapse" id="forms-collapse">
-            <li style="margin-top: 5px;" *ngFor="let anime of animes"><a class="d-inline-flex align-items-center rounded text-decoration-none" href="{{anime._id}}">{{anime.title}}</a></li>
+            <li style="margin-top: 5px;" *ngFor="let anime of animes"><a class="d-inline-flex align-items-center rounded text-decoration-none" href="anime-episodes/{{anime._id}}">{{anime.title}}</a></li>
           </ul>
         </li>
         <li class="my-2">
           <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#components-collapse" aria-controls="components-collapse">Sports</button>
           <ul class="list-unstyled ps-3 collapse" id="components-collapse">
-            <li style="margin-top: 5px;" *ngFor="let sport of sports"><a class="d-inline-flex align-items-center rounded text-decoration-none" href="{{sport._id}}">{{sport.title}}</a></li>
+            <li style="margin-top: 5px;" *ngFor="let sport of sports"><a class="d-inline-flex align-items-center rounded text-decoration-none" href="sport-episodes/{{sport._id}}">{{sport.title}}</a></li>
           </ul>
         </li>
       </ul>

@@ -12,13 +12,13 @@
 
 <div *ngIf="animes.length > 0" style="border: solid 2px rgb(255, 255, 255); border-radius: 10px;box-shadow:0px 0px 7px 3px rgba(0, 0, 0, 0.308);" class="album py-5 bg-light mb-3">
   <div class="container">
-    <h1 style="text-align: center;">Animes</h1>
+    <h1 style="text-align: center;" class="mb-4">Animes</h1>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">     
       <div  *ngFor="let anime of animes" class="col">
         <div  style="border:solid 15px rgba(255, 255, 255, 0.284);border-radius:7px;box-shadow:0px 0px 7px 6px rgba(126, 126, 126, 0.239);"  class="card shadow-sm">
           <img
-            src="../../../assets/aot.jpg"
-            height="400"
+            src="../../../assets/anime.jpg"
+            height="200"
             width="100%"
             class="bd-placeholder-img card-img-top"
             alt=""
@@ -29,7 +29,8 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <a href="anime-episodes/{{anime._id}}" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Watch</a> 
-                 <a href="add-episode" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Add an episode</a> 
+                 <a href="add-episode" class="btn btn-sm btn-success" style="text-decoration: none;margin-left: 10px;">+</a> 
+                 <a href="delete-anime/{{anime._id}}" class="btn btn-sm btn-danger" style="text-decoration: none;">-</a> 
               </div>
               <small class="text-muted"
                 >{{ anime.rating }} <span class="fa-solid fa-star"></span
@@ -44,13 +45,13 @@
 </div>
       <div *ngIf="movies.length > 0" style="border: solid 2px rgb(255, 255, 255); border-radius: 10px;box-shadow:0px 0px 7px 3px rgba(0, 0, 0, 0.308);"  class="album py-5 bg-light mb-3">
         <div class="container">
-          <h1 style="text-align: center;">Movies</h1>
+          <h1 style="text-align: center;" class="mb-4">Movies</h1>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">     
       <div *ngFor="let movie of movies" class="col"> 
         <div  style="border:solid 15px rgba(255, 255, 255, 0.284);border-radius:7px;box-shadow:0px 0px 7px 6px rgba(126, 126, 126, 0.239);"  class="card shadow-sm">
           <img
-            src="../../../assets/bbad.jpg"
-            height="400"
+            src="../../../assets/cinema.png"
+            height="200"
             width="100%"
             class="bd-placeholder-img card-img-top"
             alt=""
@@ -77,13 +78,13 @@
 
 <div *ngIf="sports.length > 0" style="border: solid 2px rgb(255, 255, 255); border-radius: 10px;box-shadow:0px 0px 7px 3px rgba(0, 0, 0, 0.308);" class="album py-5 bg-light mb-3">
   <div class="container">
-    <h1 style="text-align: center;">Sport Shows</h1>
+    <h1 style="text-align: center;" class="mb-4">Sport Shows</h1>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"> 
       <div *ngFor="let sport of sports" class="col"> 
         <div  style="border:solid 15px rgba(255, 255, 255, 0.284);border-radius:7px;box-shadow:0px 0px 7px 6px rgba(126, 126, 126, 0.239);"  class="card shadow-sm">
           <img
-            src="../../../assets/nba-2016.jpg"
-            height="400"
+            src="../../../assets/sport.jpg"
+            height="200"
             width="100%"
             class="bd-placeholder-img card-img-top"
             alt=""
@@ -94,7 +95,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <a href="sport-episodes/{{sport._id}}" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Watch</a> 
-                 <a href="add-episode" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Add an episode</a> 
+                 <a href="add-episode" class="btn btn-sm btn-success" style="text-decoration: none;">+</a> 
               </div>
               <small class="text-muted"
                 >{{ sport.rating }} <span class="fa-solid fa-star"></span

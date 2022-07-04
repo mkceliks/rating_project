@@ -15,18 +15,18 @@
     </div>
   </section>
   
-  <div *ngIf="sports.length > 0" style="border: solid 2px black; border-radius: 10px;box-shadow: 10px 5px;" class="album py-5 bg-light">
+  <div *ngIf="sports.length > 0" style="border: solid 2px rgb(255, 255, 255); border-radius: 10px;box-shadow:0px 0px 7px 3px rgba(0, 0, 0, 0.308);" class="album py-5 bg-light">
     <div class="container">
-      <h1 style="text-align: center">Sport Shows</h1>
+      <h1 style="text-align: center" class="mb-4">Sport Shows</h1>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div *ngFor="let sport of sports" class="col">
           <div
-            style="border: solid 2px black; border-radius: 7px"
+          style="border:solid 15px rgba(255, 255, 255, 0.284);border-radius:7px;box-shadow:0px 0px 7px 6px rgba(126, 126, 126, 0.239);"
             class="card shadow-sm"
           >
             <img
-              src="../../../assets/nba-2016.jpg"
-              height="400"
+              src="../../../assets/sport.jpg"
+              height="200"
               width="100%"
               class="bd-placeholder-img card-img-top"
               alt=""
