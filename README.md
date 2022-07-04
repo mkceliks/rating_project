@@ -3,7 +3,7 @@ This is gonna be a rating project for universities but it goes a movie website r
 
 For starting this project;
 
-Download or Clone the code to your desktrop.
+Download or Clone the code to your desktop.
 # open the web-interface
 - <pre><code>ng serve --open</code></pre>
 # build the main.go file
