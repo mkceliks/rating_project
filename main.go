@@ -36,7 +36,7 @@ func main() {
 
 	// r.HandleFunc("/movies/{id}", updateMovie).Methods("PUT")
 
-	handler := cors.Default().Handler(r)
+	handler := cors.AllowAll().Handler(r)
 	fmt.Printf("Server is running on port 8000")
 	log.Fatal(http.ListenAndServe(":8000", handler))
 
