@@ -1,4 +1,4 @@
-# Rating Project For Universities ( Angular and Go )
+# Rating Project For Universities ( Angular & Go & MongoDB )
 This is gonna be a rating project for universities but it goes a movie website right now :).
 
 For starting this project;
