@@ -40,6 +40,29 @@ export class EpisodesService {
 
   }
 
+  getSportsById(sportId:string):Observable<sportEpisode[]> {
+
+    let newPath = this.apiUrl + "sport-episodes/"+ sportId
+
+    return this.httpClient.get<sportEpisode[]>(newPath);
+
+  }
+
+  getAnimesById(animeId:string):Observable<animeEpisode[]> {
+
+    let newPath = this.apiUrl + "anime-episodes/"+ animeId
+
+    return this.httpClient.get<animeEpisode[]>(newPath);
+
+  }
+
+  getMoviesById(movieId:string):Observable<movieEpisode[]> {
+
+    let newPath = this.apiUrl + "movie-episodes/"+ movieId
+
+    return this.httpClient.get<movieEpisode[]>(newPath);
+
+  }
   //////////////////////////////////////////////// Setters
 
   addAnimeEpisode(episode:animeEpisode){
@@ -65,28 +88,6 @@ export class EpisodesService {
     return this.httpClient.post(newPath,episode)
 
   }
+  
 
-  getSportsById(sportId:string):Observable<sportEpisode[]> {
-
-    let newPath = this.apiUrl + "sport-episodes/"+ sportId
-
-    return this.httpClient.get<sportEpisode[]>(newPath);
-
-  }
-
-  getAnimesById(animeId:string):Observable<animeEpisode[]> {
-
-    let newPath = this.apiUrl + "anime-episodes/"+ animeId
-
-    return this.httpClient.get<animeEpisode[]>(newPath);
-
-  }
-
-  getMoviesById(movieId:string):Observable<movieEpisode[]> {
-
-    let newPath = this.apiUrl + "movie-episodes/"+ movieId
-
-    return this.httpClient.get<movieEpisode[]>(newPath);
-
-  }
 }

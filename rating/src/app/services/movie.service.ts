@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/movie';
 import { Anime } from '../models/anime';
@@ -35,6 +35,18 @@ export class MovieService {
     let newPath = this.apiUrl + "sports"
 
     return this.httpClient.get<Sport[]>(newPath);
+
+  }
+
+  deleteAnime(animeId:string){
+    let httpheaders=new HttpHeaders()
+    .set('Content-type','application/Json');
+    let options={
+      headers:httpheaders
+    };
+    let newPath = this.apiUrl + "delete-anime/" + animeId
+
+    return this.httpClient.delete(newPath)
 
   }
 
