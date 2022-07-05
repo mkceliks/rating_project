@@ -39,15 +39,27 @@ export class MovieService {
   }
 
   deleteAnime(animeId:string){
-    let httpheaders=new HttpHeaders()
-    .set('Content-type','application/Json');
-    let options={
-      headers:httpheaders
-    };
     let newPath = this.apiUrl + "delete-anime/" + animeId
 
     return this.httpClient.delete(newPath)
+  }
 
+  deleteMovie(movieId:string){
+
+    let newPath = this.apiUrl + "delete-movie/" + movieId
+
+    return this.httpClient.delete(newPath)
+  }
+
+  deleteSport(sportId:string){
+    // let httpheaders=new HttpHeaders()
+    // .set('Content-type','application/Json');
+    // let options={
+    //   headers:httpheaders
+    // };
+    let newPath = this.apiUrl + "delete-sport/" + sportId
+
+    return this.httpClient.delete(newPath)
   }
 
 }
