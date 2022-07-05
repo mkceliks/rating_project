@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   
   deletedAnime : string;
+  deletedMovie : string;
+  deletedSport : string;
   movies : Movie[] = [];
   animes : Anime[] = [];
   sports : Sport[] = [];
@@ -29,6 +31,8 @@ export class DashboardComponent implements OnInit {
 
       if(params["productId"]){
         this.deleteAnime(params["productId"]);
+        this.deleteMovie(params["productId"]);
+        this.deleteSport(params["productId"]);
       }
       
     })
@@ -60,6 +64,30 @@ export class DashboardComponent implements OnInit {
       this.deletedAnime = this.animes.filter(item => item._id == animeId)[0].title;
       this.movieService.deleteAnime(animeId).subscribe(data =>{
         alert(this.deletedAnime + " successfully deleted")
+        console.log(data)
+      });
+    })
+    this.router.navigate(['']);
+  }
+
+  deleteMovie(movieId:string){
+    this.movieService.getMovies().subscribe(response => {
+      this.movies = response
+      this.deletedMovie = this.movies.filter(item => item._id == movieId)[0].title;
+      this.movieService.deleteMovie(movieId).subscribe(data =>{
+        alert(this.deletedMovie + " successfully deleted")
+        console.log(data)
+      });
+    })
+    this.router.navigate(['']);
+  }
+
+  deleteSport(sportId:string){
+    this.movieService.getSports().subscribe(response => {
+      this.sports = response
+      this.deletedSport = this.sports.filter(item => item._id == sportId)[0].title;
+      this.movieService.deleteSport(sportId).subscribe(data =>{
+        alert(this.deletedSport + " successfully deleted")
         console.log(data)
       });
     })
