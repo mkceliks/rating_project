@@ -62,7 +62,8 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <a href="movie-episodes/{{movie._id}}" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Watch</a> 
-                 <a href="add-episode" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Add an episode</a> 
+                <a href="add-episode" class="btn btn-sm btn-success" style="text-decoration: none;margin-left: 10px;">+</a> 
+                <a href="delete-anime/{{movie._id}}" class="btn btn-sm btn-danger" style="text-decoration: none;">-</a> 
               </div>
               <small class="text-muted"
                 >{{ movie.rating }} <span class="fa-solid fa-star"></span
@@ -95,7 +96,8 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <a href="sport-episodes/{{sport._id}}" class="btn btn-sm btn-outline-secondary" style="text-decoration: none;">Watch</a> 
-                 <a href="add-episode" class="btn btn-sm btn-success" style="text-decoration: none;">+</a> 
+                <a href="add-episode" class="btn btn-sm btn-success" style="text-decoration: none;margin-left: 10px;">+</a> 
+                <a href="delete-anime/{{sport._id}}" class="btn btn-sm btn-danger" style="text-decoration: none;">-</a> 
               </div>
               <small class="text-muted"
                 >{{ sport.rating }} <span class="fa-solid fa-star"></span
