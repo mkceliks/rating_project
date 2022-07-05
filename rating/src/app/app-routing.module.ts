@@ -18,7 +18,9 @@ const routes: Routes = [
   {path:"sport-episodes/:productId",component:EpisodesComponent},
   {path:"anime-episodes/:productId",component:EpisodesComponent},
   {path:"movie-episodes/:productId",component:EpisodesComponent},
-  {path:"delete-anime/:productId",component:DashboardComponent}
+  {path:"delete-anime/:productId",component:DashboardComponent},
+  {path:"delete-movie/:productId",component:DashboardComponent},
+  {path:"delete-sport/:productId",component:DashboardComponent}
 ];
 
 @NgModule({
