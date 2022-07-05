@@ -77,4 +77,8 @@ Those all things should write to the terminal of the specific file or folder.
 - deleteAnime() service integrated with components.
 - User can delete the anime from button of ( - ) near the Watch button right now! ( Works Well!! ).
 - The pages alert the which anime deleted on the top when the user deleted an anime.
+- deleteMovie() & deleteSport() funcs added to the main.go & server.go files.
+- routing updates on frontend side for deleteMovie and deleteSport
+- buttons added for deleting and some styling updates.
+- deleting funcs integrated with component.ts of dashboard.
 
