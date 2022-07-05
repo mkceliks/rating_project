@@ -217,6 +217,35 @@ func DeleteAnime(w http.ResponseWriter, r *http.Request) {
 	animeEpisodeCollection.DeleteMany(ctx, bson.M{"anime_id": objId})
 
 }
+func DeleteMovie(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	moviesCollection := letmewatch.Collection("movies")
+	movieEpisodeCollection := letmewatch.Collection("movie-episodes")
+
+	id := mux.Vars(r)["id"]
+	objId, _ := primitive.ObjectIDFromHex(id)
+	moviesCollection.DeleteOne(ctx, bson.M{"_id": objId})
+	movieEpisodeCollection.DeleteMany(ctx, bson.M{"movie_id": objId})
+
+}
+
+func DeleteSport(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	sportsCollection := letmewatch.Collection("sports")
+	sportEpisodeCollection := letmewatch.Collection("sport-episodes")
+
+	id := mux.Vars(r)["id"]
+	objId, _ := primitive.ObjectIDFromHex(id)
+	sportsCollection.DeleteOne(ctx, bson.M{"_id": objId})
+	sportEpisodeCollection.DeleteMany(ctx, bson.M{"sport_id": objId})
+
+}
 
 func AddAnime(w http.ResponseWriter, r *http.Request) {
 

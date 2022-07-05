@@ -26,12 +26,14 @@ func main() {
 	r.HandleFunc("/movie-episodes", server.GetMovieEpisodes).Methods("GET")          // gets all movie episodes
 	r.HandleFunc("/movie-episodes/{id}", server.GetMovieEpisodesById).Methods("GET") // gets movie episodes by movie_id
 	r.HandleFunc("/add-movie", server.AddMovie).Methods("POST")                      // adds movie into movie collection
+	r.HandleFunc("/delete-movie/{id}", server.DeleteMovie).Methods("DELETE")         // deletes the selected movie and it's episodes from collections
 	r.HandleFunc("/movie-episodes/add", server.AddMovieEpisode).Methods("POST")      // adds movie episode into movie_episodes collection
 
 	r.HandleFunc("/sports", server.GetSports).Methods("GET")                         // gets all sport shows
 	r.HandleFunc("/sport-episodes", server.GetSportEpisodes).Methods("GET")          // gets all ssport shows episodes
 	r.HandleFunc("/sport-episodes/{id}", server.GetSportEpisodesById).Methods("GET") // gets sport show's all episodes by sport_id
 	r.HandleFunc("/add-sport", server.AddSport).Methods("POST")                      // adds sport show
+	r.HandleFunc("/delete-sport/{id}", server.DeleteSport).Methods("DELETE")         // deletes the selected sport and it's episodes from collections
 	r.HandleFunc("/sport-episodes/add", server.AddSportEpisode).Methods("POST")      // adds sport episode into sport_episodes collection
 
 	// r.HandleFunc("/movies/{id}", updateMovie).Methods("PUT")
