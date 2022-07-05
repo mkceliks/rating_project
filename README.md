@@ -3,7 +3,7 @@ This is gonna be a rating project for universities but it goes a movie website r
 
 For starting this project;
 
-Download or Clone the code to your desktrop.
+Download or Clone the code to your desktop.
 # open the web-interface
 - <pre><code>ng serve --open</code></pre>
 # build the main.go file
@@ -67,3 +67,14 @@ Those all things should write to the terminal of the specific file or folder.
 - Anime and Movie episodes getting byID added to the components and service on angular side.
 - Anime and Movie episodes getting byID functions added to the main.go, API Paths created to the server.go.
 - Anime delete API created. ( Tested on POSTMAN works Well!! ) It deletes the selected anime from animes collection with it's episodes(from anime-episodes coll).
+
+# 05.07.2022
+
+- Cors function updated to AllowAll() from Default() to integrate with DELETE method.
+- deleteAnime() service added into the movie.service.ts file with API coming from main.go file.
+- Some box styling updates.
+- Images generated for all anime & movie & sport categories.
+- deleteAnime() service integrated with components.
+- User can delete the anime from button of ( - ) near the Watch button right now! ( Works Well!! ).
+- The pages alert the which anime deleted on the top when the user deleted an anime.
+
