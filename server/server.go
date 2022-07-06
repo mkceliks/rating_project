@@ -247,6 +247,31 @@ func DeleteSport(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func updateAnime(w http.ResponseWriter, r *http.Request) {
+
+	conn := InitiateMongoClient()
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	letmewatch := conn.Database("letmewatch")
+	animeCollection := letmewatch.Collection("animes")
+	if r.Method == "POST" {
+		w.Header().Set("Content-Type", "application/json")
+		var anime models.Anime
+		_ = json.NewDecoder(r.Body).Decode(&anime)
+		id := mux.Vars(r)["id"]
+		objId, _ := primitive.ObjectIDFromHex(id)
+		filter := bson.M{{"_id", objId}}
+		update := bson.D{"$set", bson.D{
+			{"rating", anime.Rating},
+			{"title", anime.Title},
+		}}
+		result, err := animeCollection.UpdateOne(ctx, filter, update)
+		json.NewEncoder(w).Encode(result)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+}
+
 func AddAnime(w http.ResponseWriter, r *http.Request) {
 
 	conn := InitiateMongoClient()
