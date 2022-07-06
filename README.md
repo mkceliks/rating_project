@@ -82,3 +82,8 @@ Those all things should write to the terminal of the specific file or folder.
 - buttons added for deleting and some styling updates.
 - deleting funcs integrated with component.ts of dashboard.
 
+# 06.07.2022
+
+- updateAnime() func added. Trying to handle with it.. ( NOT WORKING RIGHT NOW! )
+- Redis lib downloaded for caching system. ( Will integrate soon. )
+
