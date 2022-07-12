@@ -28,7 +28,7 @@ func InitiateMongoClient() *mongo.Client {
 
 	var err error
 	var client *mongo.Client
-	uri := "mongodb+srv://mkceliks:159987741@loginsystem.0j8qw.mongodb.net/?retryWrites=true&w=majority"
+	uri := "mongodb://localhost:27017"
 	opts := options.Client()
 	opts.ApplyURI(uri)
 	opts.SetMaxPoolSize(5)
@@ -38,13 +38,15 @@ func InitiateMongoClient() *mongo.Client {
 	return client
 }
 
+var conn = InitiateMongoClient()
+
+var letmewatch = conn.Database("letmewatch")
+
 func GetAnimes(w http.ResponseWriter, r *http.Request) {
 
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	start := time.Now()
 	animeCollection := letmewatch.Collection("animes")
-
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	cursor, err := animeCollection.Find(ctx, bson.M{})
 	if err != nil {
 		log.Fatal(err)
@@ -53,16 +55,14 @@ func GetAnimes(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 	json.NewEncoder(w).Encode(animes)
+	log.Printf("Binomial took %s", time.Since(start))
 
 }
 
 func GetMovies(w http.ResponseWriter, r *http.Request) {
 
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
 	movieCollection := letmewatch.Collection("movies")
-
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	cursor, err := movieCollection.Find(ctx, bson.M{})
 	if err != nil {
 		log.Fatal(err)
@@ -76,11 +76,8 @@ func GetMovies(w http.ResponseWriter, r *http.Request) {
 
 func GetSports(w http.ResponseWriter, r *http.Request) {
 
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
 	sportCollection := letmewatch.Collection("sports")
-
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	cursor, err := sportCollection.Find(ctx, bson.M{})
 	if err != nil {
 		log.Fatal(err)
@@ -94,11 +91,8 @@ func GetSports(w http.ResponseWriter, r *http.Request) {
 
 func GetAnimeEpisodes(w http.ResponseWriter, r *http.Request) {
 
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
 	animeEpisodeCollection := letmewatch.Collection("anime-episodes")
-
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	cursor, err := animeEpisodeCollection.Find(ctx, bson.M{})
 	if err != nil {
 		log.Fatal(err)
@@ -112,11 +106,8 @@ func GetAnimeEpisodes(w http.ResponseWriter, r *http.Request) {
 
 func GetMovieEpisodes(w http.ResponseWriter, r *http.Request) {
 
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
 	movieEpisodeCollection := letmewatch.Collection("movie-episodes")
-
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	cursor, err := movieEpisodeCollection.Find(ctx, bson.M{})
 	if err != nil {
 		log.Fatal(err)
@@ -130,11 +121,8 @@ func GetMovieEpisodes(w http.ResponseWriter, r *http.Request) {
 
 func GetSportEpisodes(w http.ResponseWriter, r *http.Request) {
 
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
 	sportEpisodeCollection := letmewatch.Collection("sport-episodes")
-
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	cursor, err := sportEpisodeCollection.Find(ctx, bson.M{})
 	if err != nil {
 		log.Fatal(err)
@@ -148,10 +136,8 @@ func GetSportEpisodes(w http.ResponseWriter, r *http.Request) {
 
 func GetAnimeEpisodesById(w http.ResponseWriter, r *http.Request) {
 
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
 	animeEpisodeCollection := letmewatch.Collection("anime-episodes")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	id := mux.Vars(r)["id"]
 	objId, _ := primitive.ObjectIDFromHex(id)
 	cursor, err := animeEpisodeCollection.Find(ctx, bson.M{"anime_id": objId})
@@ -167,10 +153,8 @@ func GetAnimeEpisodesById(w http.ResponseWriter, r *http.Request) {
 
 func GetMovieEpisodesById(w http.ResponseWriter, r *http.Request) {
 
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
 	movieEpisodeCollection := letmewatch.Collection("movie-episodes")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	id := mux.Vars(r)["id"]
 	objId, _ := primitive.ObjectIDFromHex(id)
 	cursor, err := movieEpisodeCollection.Find(ctx, bson.M{"movie_id": objId})
@@ -186,10 +170,9 @@ func GetMovieEpisodesById(w http.ResponseWriter, r *http.Request) {
 
 func GetSportEpisodesById(w http.ResponseWriter, r *http.Request) {
 
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
 	sportEpisodeCollection := letmewatch.Collection("sport-episodes")
+
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	id := mux.Vars(r)["id"]
 	objId, _ := primitive.ObjectIDFromHex(id)
 	cursor, err := sportEpisodeCollection.Find(ctx, bson.M{"sport_id": objId})
@@ -204,10 +187,7 @@ func GetSportEpisodesById(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteAnime(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	animesCollection := letmewatch.Collection("animes")
 	animeEpisodeCollection := letmewatch.Collection("anime-episodes")
 
@@ -218,10 +198,7 @@ func DeleteAnime(w http.ResponseWriter, r *http.Request) {
 
 }
 func DeleteMovie(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	moviesCollection := letmewatch.Collection("movies")
 	movieEpisodeCollection := letmewatch.Collection("movie-episodes")
 
@@ -233,10 +210,7 @@ func DeleteMovie(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteSport(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	sportsCollection := letmewatch.Collection("sports")
 	sportEpisodeCollection := letmewatch.Collection("sport-episodes")
 
@@ -247,24 +221,20 @@ func DeleteSport(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func updateAnime(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+func UpdateAnime(w http.ResponseWriter, r *http.Request) {
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	animeCollection := letmewatch.Collection("animes")
-	if r.Method == "POST" {
+	if r.Method == "PUT" {
 		w.Header().Set("Content-Type", "application/json")
 		var anime models.Anime
 		_ = json.NewDecoder(r.Body).Decode(&anime)
 		id := mux.Vars(r)["id"]
 		objId, _ := primitive.ObjectIDFromHex(id)
-		filter := bson.M{{"_id", objId}}
-		update := bson.D{"$set", bson.D{
+		filter := bson.D{{"_id", objId}}
+		result, err := animeCollection.UpdateOne(ctx, filter, bson.D{
 			{"rating", anime.Rating},
 			{"title", anime.Title},
-		}}
-		result, err := animeCollection.UpdateOne(ctx, filter, update)
+		})
 		json.NewEncoder(w).Encode(result)
 		if err != nil {
 			log.Fatal(err)
@@ -273,10 +243,7 @@ func updateAnime(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddAnime(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	animeCollection := letmewatch.Collection("animes")
 
 	if r.Method == "POST" {
@@ -296,10 +263,7 @@ func AddAnime(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddMovie(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	movieCollection := letmewatch.Collection("movies")
 
 	if r.Method == "POST" {
@@ -319,10 +283,7 @@ func AddMovie(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddSport(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	sportCollection := letmewatch.Collection("sports")
 
 	if r.Method == "POST" {
@@ -342,10 +303,7 @@ func AddSport(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddAnimeEpisode(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	animeEpisodeCollection := letmewatch.Collection("anime-episodes")
 
 	if r.Method == "POST" {
@@ -367,10 +325,7 @@ func AddAnimeEpisode(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddMovieEpisode(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	movieEpisodeCollection := letmewatch.Collection("movie-episodes")
 
 	if r.Method == "POST" {
@@ -392,10 +347,7 @@ func AddMovieEpisode(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddSportEpisode(w http.ResponseWriter, r *http.Request) {
-
-	conn := InitiateMongoClient()
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	letmewatch := conn.Database("letmewatch")
+	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	sportEpisodeCollection := letmewatch.Collection("sport-episodes")
 
 	if r.Method == "POST" {

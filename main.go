@@ -21,6 +21,7 @@ func main() {
 	r.HandleFunc("/add-anime", server.AddAnime).Methods("POST")                      // adds anime into anime collection
 	r.HandleFunc("/delete-anime/{id}", server.DeleteAnime).Methods("DELETE")         // deletes the selected anime and it's episodes from collections
 	r.HandleFunc("/anime-episodes/add", server.AddAnimeEpisode).Methods("POST")      // adds anime episode into anime_episodes collection
+	r.HandleFunc("/anime-update/{id}", server.UpdateAnime).Methods("PUT")            // updates anime with entry values
 
 	r.HandleFunc("/movies", server.GetMovies).Methods("GET")                         // gets all movies
 	r.HandleFunc("/movie-episodes", server.GetMovieEpisodes).Methods("GET")          // gets all movie episodes
@@ -35,8 +36,6 @@ func main() {
 	r.HandleFunc("/add-sport", server.AddSport).Methods("POST")                      // adds sport show
 	r.HandleFunc("/delete-sport/{id}", server.DeleteSport).Methods("DELETE")         // deletes the selected sport and it's episodes from collections
 	r.HandleFunc("/sport-episodes/add", server.AddSportEpisode).Methods("POST")      // adds sport episode into sport_episodes collection
-
-	// r.HandleFunc("/movies/{id}", updateMovie).Methods("PUT")
 
 	handler := cors.AllowAll().Handler(r)
 	fmt.Printf("Server is running on port 8000")
