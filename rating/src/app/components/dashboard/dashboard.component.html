@@ -3,7 +3,9 @@
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light">Dashboard</h1>
       <p *ngIf="animes.length > 0 || movies.length > 0  || sports.length > 0" class="lead text-muted">
-        There are <span *ngIf="movies.length > 0 " style="font-weight: bold;">{{ movies.length }} movies</span>,<span *ngIf="animes.length > 0" style="font-weight: bold;"> {{ animes.length }} animes</span>,
+        There are 
+        <span *ngIf="movies.length > 0 " style="font-weight: bold;">{{ movies.length }} movies </span>,
+        <span *ngIf="animes.length > 0" style="font-weight: bold;"> {{ animes.length }} animes</span>,
         <span *ngIf="sports.length > 0" style="font-weight: bold;">{{ sports.length }} sport shows</span> in the list.
       </p>
     </div>
