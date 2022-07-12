@@ -10,7 +10,7 @@
 
     <form [formGroup]="animeEpisodeAddForm" class="row g-3 mb-3">
         <select class="form-select" name="anime_id" formControlName="anime_id" id="anime_id">
-            <option value="" selected disabled>Select an anime for add an episode </option>
+            <option value="" selected disabled>Select an anime to add an episode </option>
             <option *ngFor="let anime of animes" value="{{anime._id}}">{{anime.title}}</option>
           </select>
       <div class="col-md-6">
@@ -102,8 +102,8 @@
           Submit form
         </button>
       </div>
-    </form>
-
+    </form> -->
+    
     <form [formGroup]="sportEpisodeAddForm" class="row g-3 mb-3">
         <select class="form-select" name="sport_id" formControlName="sport_id" id="sport_id">
             <option value="" selected disabled>Select a sport show for add an episode </option>

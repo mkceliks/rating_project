@@ -12,7 +12,9 @@ import { CategoryComponent } from './components/category/category.component';
 import { AnimesComponent } from './components/animes/animes.component';
 import { SportsComponent } from './components/sports/sports.component';
 import { AddEpisodeComponent } from './components/add-episode/add-episode.component';
-import { EpisodesComponent } from './components/episodes/episodes.component';
+import { AnimeEpisodesComponent } from './components/anime-episodes/anime-episodes.component';
+import { SportEpisodesComponent } from './components/sport-episodes/sport-episodes.component';
+import { MovieEpisodesComponent } from './components/movie-episodes/movie-episodes.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { EpisodesComponent } from './components/episodes/episodes.component';
     AnimesComponent,
     SportsComponent,
     AddEpisodeComponent,
-    EpisodesComponent
+    AnimeEpisodesComponent,
+    SportEpisodesComponent,
+    MovieEpisodesComponent
   ],
   imports: [
     BrowserModule,
