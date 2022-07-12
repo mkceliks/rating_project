@@ -87,3 +87,16 @@ Those all things should write to the terminal of the specific file or folder.
 - updateAnime() func added. Trying to handle with it.. ( NOT WORKING RIGHT NOW! )
 - Redis lib downloaded for caching system. ( Will integrate soon. )
 
+# 12.07.2022
+
+- Connection speed increased with declaring a global variable of InitiateMongoClient() function.
+- episodes component deleted because of some bugs.
+- episodes categories are divided into components
+- sport-episodes component created and integrated with episodes service.
+- movie-episodes component created and integrated with episodes service.
+- anime-episodes component created and integrated with episodes service.
+- some fixes with linking in animes component.
+- dashboartd component text fixed.
+- icon of the website changed.
+- The server uri changed to the local on mongoDB ( My tests says : The free MongoDB Atlas Cluster is too slow. You should buy a paid cluster to work fast. )
+
