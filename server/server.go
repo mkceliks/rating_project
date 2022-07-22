@@ -44,7 +44,6 @@ var letmewatch = conn.Database("letmewatch")
 
 func GetAnimes(w http.ResponseWriter, r *http.Request) {
 
-	start := time.Now()
 	animeCollection := letmewatch.Collection("animes")
 	var ctx, _ = context.WithTimeout(context.Background(), 10*time.Second)
 	cursor, err := animeCollection.Find(ctx, bson.M{})
@@ -55,7 +54,6 @@ func GetAnimes(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 	json.NewEncoder(w).Encode(animes)
-	log.Printf("Binomial took %s", time.Since(start))
 
 }
 
@@ -231,10 +229,11 @@ func UpdateAnime(w http.ResponseWriter, r *http.Request) {
 		id := mux.Vars(r)["id"]
 		objId, _ := primitive.ObjectIDFromHex(id)
 		filter := bson.D{{"_id", objId}}
-		result, err := animeCollection.UpdateOne(ctx, filter, bson.D{
+		replacement := bson.D{
 			{"rating", anime.Rating},
 			{"title", anime.Title},
-		})
+		}
+		result, err := animeCollection.ReplaceOne(ctx, filter, replacement)
 		json.NewEncoder(w).Encode(result)
 		if err != nil {
 			log.Fatal(err)
