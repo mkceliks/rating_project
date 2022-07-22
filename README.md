@@ -100,3 +100,6 @@ Those all things should write to the terminal of the specific file or folder.
 - icon of the website changed.
 - The server uri changed to the local on mongoDB ( My tests says : The free MongoDB Atlas Cluster is too slow. You should buy a paid cluster to work fast. )
 
+# 21.07.2022
+
+- Update function created for Anime category ( Tested on Postman Works Well!! )
