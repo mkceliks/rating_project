@@ -103,3 +103,8 @@ Those all things should write to the terminal of the specific file or folder.
 # 21.07.2022
 
 - Update function created for Anime category ( Tested on Postman Works Well!! )
+
+# 25.07.2022
+
+- Started to designing of product updating page in front-end side.
+- Started to create update service and integrating with API.
