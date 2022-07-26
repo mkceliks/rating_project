@@ -15,6 +15,7 @@ import { AddEpisodeComponent } from './components/add-episode/add-episode.compon
 import { AnimeEpisodesComponent } from './components/anime-episodes/anime-episodes.component';
 import { SportEpisodesComponent } from './components/sport-episodes/sport-episodes.component';
 import { MovieEpisodesComponent } from './components/movie-episodes/movie-episodes.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MovieEpisodesComponent } from './components/movie-episodes/movie-episod
     AddEpisodeComponent,
     AnimeEpisodesComponent,
     SportEpisodesComponent,
-    MovieEpisodesComponent
+    MovieEpisodesComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
